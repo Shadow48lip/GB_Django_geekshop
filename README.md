@@ -1,1 +1,1 @@
-geekshop
+Основы Django Framework
