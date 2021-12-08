@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Контакты</title>
-	<link rel="stylesheet" type="text/css" href="/static/mainapp/style.css">
-	<link rel="stylesheet" href="/static/mainapp/fonts/font-awesome/css/font-awesome.css">
-</head>
-<body>
-	<div class="container">
+{% extends 'mainapp/base.html' %}
+
+
+{% block content %}
 		<div class="hero">
 			<div class="header clearfix">
-				<a href="/" class="logo"></a>
-				<ul class="menu">
-					<li><a href="/" class="active">домой</a></li>
-					<li><a href="/products/">продукты</a></li>
-					<li><a href="/contacts/">контакты</a></li>
-				</ul>
-				<a href="#" class="search"></a>
+	{% include 'mainapp/includes/inc_mainmenu.html' %}
                 <a href="#" class="basket"></a>
 			</div>
 			<h1>наши контакты</h1>
@@ -73,35 +61,5 @@
 			</div>
 		</div>
 
-		<div class="clr"></div>
-	</div>	
-
-    <div class="footer">
-        <div class="clearfix">
-            <div class="text-footer">
-                <h3>контакты</h3>
-            </div>
-            <div class="text-footer">
-                <h3>полезная информация</h3>
-            </div>
-            <div class="text-footer clearfix">
-                <h3>Оставайтесь на связи</h3>
-                <p>Подписаться на новости и рассылки</p>
-                <form>
-                    <input type="email" name="email" placeholder="ваш email">
-                    <a href="#"><i class="fa fa-paper-plane fa-2x" aria-hidden="true"></i></a>
-                </form>
-            </div>
-        </div>
-        <p class="small">&copy; GB 2017</p>
-        <div class="social">
-            <a href="#" class="social1"></a>
-            <a href="#" class="social2"></a>
-            <a href="#" class="social3"></a>
-            <a href="#" class="social4"></a>
-        </div>
-        <p class="small">Положения &amp; Условия  /  Конфиденциальность &amp; Cookies</p>
-    </div>	
 			
-</body>
-</html>
+{% endblock %}

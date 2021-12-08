@@ -1,0 +1,7 @@
+*__pycache__*
+*.pyc
+*.pyo
+*.DS_Store
+# Django stuff:
+*.log
+*.pot

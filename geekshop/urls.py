@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from mainapp.views import index, contacts
+# import mainapp.views as mainapp - можно сразу все импортнуть
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
-    path('contacts/', contacts),
-    path('products/', include('productsapp.urls')),
+    path('', index, name='index'),
+    path('contacts/', contacts, name='contacts'),
+    # path('contacts/', mainapp.contacts, name='contacts'), - если все ипортировали, то подгружать так
+    path('products/', include('productsapp.urls', namespace='products')),
 ]
