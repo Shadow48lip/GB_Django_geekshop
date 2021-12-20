@@ -1,0 +1,38 @@
+[
+  {
+    "category": 1,
+    "name": "Квадратный стул",
+    "image": "products_images/product-4.jpg",
+    "short_desc": "Удобный квадратный стул",
+    "description": "",
+    "price": "1960.90",
+    "quantity": 10
+  },
+  {
+    "category": 1,
+    "name": "Часы в дом",
+    "image": "products_images/product-4-sm.jpg",
+    "short_desc": "Удивительные часы",
+    "description": "Удивительный стул красного цвета. Удивительный стул красного цвета. \r\nУдивительный стул красного цвета.",
+    "price": "599.90",
+    "quantity": 5
+  },
+  {
+    "category": 2,
+    "name": "Часы в офис",
+    "image": "products_images/product-4-sm_9xV4hTk.jpg",
+    "short_desc": "Часы часы",
+    "description": "",
+    "price": "1500.00",
+    "quantity": 10
+  },
+  {
+    "category": 3,
+    "name": "Стулья",
+    "image": "products_images/product-2.jpg",
+    "short_desc": "Стулья стулья",
+    "description": "",
+    "price": "999.00",
+    "quantity": 3
+  }
+]

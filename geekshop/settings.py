@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'mainapp',
     'productsapp',
+    'authapp',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Переключение аутентификации через нашу модель
+AUTH_USER_MODEL = 'authapp.ShopUser'
