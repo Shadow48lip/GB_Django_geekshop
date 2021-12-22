@@ -1,102 +1,118 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 
+{% block mainmenu %}
+    <div class="hero-white">
+        <div class="header clearfix">
+            {% include 'mainapp/includes/inc_mainmenu.html' %}
+            <a href="{% url 'basket:index' %}" class="basket">
+              {%  if basket_detail %}
+                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                  <span class="basket_detail">{{ basket_detail.sum_quantity }}тов. {{ basket_detail.sum_price }}р.</span>
+              {% endif %}
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
-		<div class="hero-white">
-			<div class="header clearfix">
-	{% include 'mainapp/includes/inc_mainmenu.html' %}
-                <a href="#" class="basket"></a>
-			</div>
-		</div>
+    <div class="details">
+        <div class="links clearfix">
+            <ul class="links-menu">
+                <li><a href="{% url 'products:category' 0 %}"
+                       class="{% if request.resolver_match.kwargs.pk|default:0 == 0 %}active{% endif %}">Все</a></li>
+                {% for link in links_menu %}
+                    <li><a href="{% url 'products:category' link.pk %}"
+                           class="{% if request.resolver_match.kwargs.pk == link.pk %}active{% endif %}">{{ link.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
 
-		<div class="details">
-			<div class="links clearfix">
-				<ul class="links-menu">
-                    <li><a href="{% url 'products:index' %}" class="{% if pk == None %}active{% endif %}">Все</a></li>
-                {% for category in categories %}
-					<li><a href="{% url 'products:index' %}{{ category.id }}" class="{% if pk == category.id %}active{% endif %}">{{ category.name }}</a></li>
-				{% endfor %}
-				</ul>
-			</div>
+        <div class="details-products">
+            <div class="details-slider">
+                <div class="slider-product">
+                    <img src="{% static 'mainapp/img/slider1.jpg' %}">
+                </div>
+                <div class="slider-control">
+                    <div class="block">
+                        <a href="#"><img src="{% static 'mainapp/img/controll.jpg' %}" alt="">
+                            <div class="text"></div>
+                        </a>
+                    </div>
+                    <div class="block">
+                        <a href="#"><img src="{% static 'mainapp/img/controll1.jpg' %}" alt="">
+                            <div class="text"></div>
+                        </a>
+                    </div>
+                    <div class="block">
+                        <a href="#"><img src="{% static 'mainapp/img/controll2.jpg' %}" alt="">
+                            <div class="text"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-			<div class="details-products">
-				<div class="details-slider">
-					<div class="slider-product">
-						<img src="{% static 'mainapp/img/slider1.jpg' %}">
-					</div>
-					<div class="slider-control">
-						<div class="block">
-							<a href="#"><img src="{% static 'mainapp/img/controll.jpg' %}" alt="">
-								<div class="text"></div>
-							</a>
-						</div>
-						<div class="block">
-							<a href="#"><img src="{% static 'mainapp/img/controll1.jpg' %}" alt="">
-								<div class="text"></div>
-							</a>
-						</div>
-						<div class="block">
-							<a href="#"><img src="{% static 'mainapp/img/controll2.jpg' %}" alt="">
-								<div class="text"></div>
-							</a>
-						</div>
-					</div>
-				</div>
+            <div class="description">
+                <h3 class="big-bold">Отличный стул</h3>
+                <h3 class="red">горячее предложение</h3>
+                <p class="price"> 2585.9 <span>руб</span></p>
+                <a href="#" class="red-button">
+                    заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+                <div class="description-text">
+                    <p>Расположитесь комфортно.</p>
+                    <p>Отличное качество материалов
+                        позволит вам это.</p>
+                    <p>Различные цвета</p>
+                    <p>высочайший уровень
+                        эргономики и прочность.</p>
+                </div>
+            </div>
+        </div>
 
-				<div class="description">
-					<h3 class="big-bold">Отличный стул</h3>
-					<h3 class="red">горячее предложение</h3>
-					<p class="price"> 2585.9 <span>руб</span></p>
-					<a href="#" class="red-button">
-						заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
-					</a>
-					<div class="description-text">
-						<p>Расположитесь комфортно.</p> 
-						<p>Отличное качество материалов
-						позволит вам это.</p> 
-						<p>Различные цвета</p>
-						<p>высочайший уровень
-						эргономики и прочность.</p>
-					</div>
-				</div>
-			</div>
+        {% if category %}
+        <div class="related">
+            <div class="title clearfix">
+                <h2>Категория "{{ category.name|title }}"</h2>
+            </div>
+            <div class="related-products clearfix">
+                {% for product in products %}
+                <div class="block">
+                    <a href="{% url 'basket:add' product.pk %}"><img src="/media/{{ product.image }}" alt="">
+                        <div class="text">
+                            <img src="{% static 'mainapp/img/icon-hover.png' %}" alt="img">
+                            <h4>{{ product.name }}</h4>
+                            <p>{{ product.description }}</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {%  endif %}
 
-			<div class="related">
-				<div class="title clearfix">
-					<h2>Похожие продукты</h2>
-					<a class="explore" href="#">показать все <img src="{% static 'mainapp/img/arrow.png' %}" alt=""></a>
-				</div>
-				<div class="related-products clearfix">
-					<div class="block">
-						<a href="#"><img src="{% static 'mainapp/img/product-11.jpg' %}" alt="">
-							<div class="text">
-								<img src="{% static 'mainapp/img/icon-hover.png' %}" alt="img">
-								<h4>Стул повышенного качества</h4>
-								<p>Не оторваться. </p>
-							</div>
-						</a>
-					</div>
-					<div class="block">
-						<a href="#"><img src="{% static 'mainapp/img/product-21.jpg' %}" alt="">
-							<div class="text">
-								<img src="{% static 'mainapp/img/icon-hover.png' %}" alt="img">
-								<h4>Стул повышенного качества</h4>
-								<p>Не оторваться. </p>
-							</div>
-						</a>
-					</div>
-					<div class="block">
-						<a href="#"><img src="{% static 'mainapp/img/product-31.jpg' %}" alt="">
-							<div class="text">
-								<img src="{% static 'mainapp/img/icon-hover.png' %}" alt="img">
-								<h4>Стул повышенного качества</h4>
-								<p>Не оторваться. </p>
-							</div>
-						</a>
-					</div>
+        {% if same_products %}
+        <div class="related">
+            <div class="title clearfix">
+                <h2>Похожие продукты</h2>
+            </div>
+            <div class="related-products clearfix">
+                {% for product in same_products %}
+                <div class="block">
+                    <a href="{% url 'basket:add' product.pk %}"><img src="/media/{{ product.image }}" alt="">
+                        <div class="text">
+                            <img src="{% static 'mainapp/img/icon-hover.png' %}" alt="img">
+                            <h4>{{ product.name }}</h4>
+                            <p>{{ product.description }}</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {%  endif %}
 
-				</div>
-			</div>
-		</div>
+    </div>
 
 {% endblock %}

@@ -28,6 +28,7 @@ urlpatterns = [
     # path('contacts/', mainapp.contacts, name='contacts'), - если все импортировали, то подгружать так
     path('products/', include('productsapp.urls', namespace='products')),
     path('auth/', include('authapp.urls', namespace='auth')),
+    path('basket/', include('basketapp.urls', namespace='basket')),
 ]
 
 if settings.DEBUG:

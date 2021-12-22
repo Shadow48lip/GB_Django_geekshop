@@ -1,8 +1,8 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 
-{% block content %}
 
+{% block mainmenu %}
 		<div class="slider">
 			<div class="header clearfix">
 	{% include 'mainapp/includes/inc_mainmenu.html' %}
@@ -12,11 +12,16 @@
 				<h3 class="big"> удобные стулья</h3>
 				<p>Новый уровень комфорта. Отличные характеристики.</p>
 				<a href="#" class="button-order">заказать <img src="{% static 'mainapp/img/arrow.png' %}" alt=""></a>
-			</div>	
+			</div>
 			<div class="navi">
 				<a href="#"></a><a href="#"></a><a href="#"></a>
 			</div>
 		</div>
+{% endblock %}
+
+{% block content %}
+
+
 
 		<div class="featured">
 			<div class="featured-menu">

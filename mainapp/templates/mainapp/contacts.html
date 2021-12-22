@@ -1,15 +1,17 @@
 {% extends 'mainapp/base.html' %}
 
 
-{% block content %}
-		<div class="hero">
+{% block mainmenu %}
+        <div class="hero">
 			<div class="header clearfix">
 	{% include 'mainapp/includes/inc_mainmenu.html' %}
                 <a href="#" class="basket"></a>
 			</div>
 			<h1>наши контакты</h1>
 		</div>
+{% endblock %}
 
+{% block content %}
 		<div class="location">
 			<div class="location-1">
 				<i class="fa fa-map-marker fa-5x"></i>
