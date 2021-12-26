@@ -1,0 +1,15 @@
+{% extends 'basketapp/base.html' %}
+{% load static %}
+
+{% block js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'basketapp/js/basket_scripts.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="basket_list">
+        {% include 'basketapp/includes/inc_basket_list.html' %}
+    </div>
+
+    <br><a href="{% url 'index' %}" class="btn btn-outline-primary w-100">на главную</a>
+{% endblock %}

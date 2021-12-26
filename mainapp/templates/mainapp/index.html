@@ -3,47 +3,53 @@
 
 
 {% block mainmenu %}
-		<div class="slider">
-			<div class="header clearfix">
-	{% include 'mainapp/includes/inc_mainmenu.html' %}
-			</div>
-			<div class="text-slider">
-				<h3 class="green">тенденции</h3>
-				<h3 class="big"> удобные стулья</h3>
-				<p>Новый уровень комфорта. Отличные характеристики.</p>
-				<a href="#" class="button-order">заказать <img src="{% static 'mainapp/img/arrow.png' %}" alt=""></a>
-			</div>
-			<div class="navi">
-				<a href="#"></a><a href="#"></a><a href="#"></a>
-			</div>
-		</div>
+    <div class="slider">
+        <div class="header clearfix">
+            {% include 'mainapp/includes/inc_mainmenu.html' %}
+            {% if basket %}
+                <a href="{% url 'basket:index' %}" class="basket">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <span class="basket_detail">{{ basket.0.total_quantity }}тов. {{ basket.0.total_cost|floatformat:0 }}р.</span>
+                </a>
+            {% endif %}
+        </div>
+        <div class="text-slider">
+            <h3 class="green">тенденции</h3>
+            <h3 class="big"> удобные стулья</h3>
+            <p>Новый уровень комфорта. Отличные характеристики.</p>
+            <a href="#" class="button-order">заказать <img src="{% static 'mainapp/img/arrow.png' %}" alt=""></a>
+        </div>
+        <div class="navi">
+            <a href="#"></a><a href="#"></a><a href="#"></a>
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}
 
 
 
-		<div class="featured">
-			<div class="featured-menu">
-					<a class="active" href="#">Популярные</a><a href="#">Новинки</a>
-			</div>
-			<a class="explore" href="#">показать все <img src="{% static 'mainapp/img/arrow.png' %}" alt=""></a>
-			<div class="clearfix">
-			</div>
-			<div class="tab-content">
-               {% for product in products %}
-				<div class="block">
-                    <a href="#"><img src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
-						<div class="text">
-							<img src="{% static 'mainapp/img/icon-hover.png' %}" alt="img">
-							<h4>{{ product.name }}</h4>
-							<p>{{ product.short_desc }}</p>
-						</div>
-					</a>
-				</div>
-               {% endfor %}
+    <div class="featured">
+        <div class="featured-menu">
+            <a class="active" href="#">Популярные</a><a href="#">Новинки</a>
+        </div>
+        <a class="explore" href="#">показать все <img src="{% static 'mainapp/img/arrow.png' %}" alt=""></a>
+        <div class="clearfix">
+        </div>
+        <div class="tab-content">
+            {% for product in products %}
+                <div class="block">
+                    <a href="{% url 'products:product' product.pk %}"><img src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
+                        <div class="text">
+                            <img src="{% static 'mainapp/img/icon-hover.png' %}" alt="img">
+                            <h4>{{ product.name }}</h4>
+                            <p>{{ product.short_desc }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
 
-			</div>
-		</div>
+        </div>
+    </div>
 
 {% endblock %}
