@@ -1,0 +1,67 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Товары в категории {{ category.name }}</h1>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+                Категории
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Наименование</th>
+                            <th>Цена</th>
+                            <th>Количество</th>
+                            <th>Подробнее</th>
+                            <th>Редактировать </th>
+                            <th>Удалить</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Наименование</th>
+                            <th>Цена</th>
+                            <th>Количество</th>
+                            <th>Подробнее</th>
+                            <th>Редактировать</th>
+                            <th>Удалить</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        {% for object in objects %}
+                            <tr {% if not object.is_active %} style="opacity: 0.5;" {% endif %}>
+                                <td>{{ object.name }}</td>
+                                <td>{{ object.price }} <i class="fas fa-ruble-sign"></i></td>
+                                <td>{{ object.quantity }}</td>
+                                <td class="text-center">
+                                    <a href="{% url 'admin_staff:product_read' object.pk %}"><i class='bx bx-info-circle' ></i></a>
+                                </td>
+                                <td class="text-center">
+                                    <a href="{% url 'admin_staff:product_update' object.pk %}"><i class='bx bxs-edit-alt'></i></a>
+                                </td>
+                                <td class="text-center">
+                                    <a {% if not object.is_active %} class="invisible" {% endif %} href="{% url 'admin_staff:product_delete' pk=object.pk %}">
+                                        <i class="fa fa-times-circle"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'admin_staff:product_create' category.pk%}">
+                    <button class="btn btn-success">Добавить товар в категорию</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

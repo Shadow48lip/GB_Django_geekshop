@@ -28,7 +28,8 @@ def index(request, pk=None):
     title = 'продукты'
 
     basket = get_basket(request.user)
-    links_menu = ProductCategory.objects.all()
+    # links_menu = ProductCategory.objects.all()
+    links_menu = ProductCategory.objects.filter(is_active=True)
 
     if pk is not None:
         if pk == 0:

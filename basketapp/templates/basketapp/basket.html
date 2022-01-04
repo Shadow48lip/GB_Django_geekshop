@@ -1,4 +1,4 @@
-{% extends 'basketapp/base.html' %}
+{% extends 'mainapp/base.html' %}
 {% load static %}
 
 {% block js %}
@@ -6,10 +6,34 @@
     <script src="{% static 'basketapp/js/basket_scripts.js' %}"></script>
 {% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'basketapp/style.css' %}">
+{% endblock %}
+
+{% block mainmenu %}
+    <div class="hero-white">
+        <div class="header clearfix">
+            {% include 'mainapp/includes/inc_mainmenu.html' %}
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
+
+    <div class="basket_name">
+        Ваша корзина,
+        {% if user.first_name %}
+            {{ user.first_name|title }}
+        {% else %}
+            Пользователь
+        {% endif %}
+    </div>
     <div class="basket_list">
         {% include 'basketapp/includes/inc_basket_list.html' %}
     </div>
 
-    <br><a href="{% url 'index' %}" class="btn btn-outline-primary w-100">на главную</a>
+    <div class="basket_name">
+        <a href="{% url 'index' %}" class="button-order">на главную</a>
+    </div>
+    <br>
 {% endblock %}

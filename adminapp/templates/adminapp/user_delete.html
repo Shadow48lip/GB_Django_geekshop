@@ -1,0 +1,27 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="user_delete">
+        Уверены, что хотите удалить <b>{{ user_to_delete.username }}</b>
+        {% if user_to_delete.first_name %}
+            ({{ user_to_delete.first_name|title }}
+            {% if user_to_delete.last_name %}
+                {{ user_to_delete.last_name|title }}
+            {% endif %})
+        {% endif %}
+        ?
+        <form action="{% url 'admin_staff:user_delete' user_to_delete.pk %}"
+              method="post">
+            {% csrf_token %}
+            <input class="btn btn-danger" type="submit" value="удалить">
+        </form>
+
+        <br>
+        <a href="{% url 'admin_staff:users' %}">
+            <button class="btn btn-success">
+                Отмена
+            </button>
+        </a>
+    </div>
+{% endblock %}
