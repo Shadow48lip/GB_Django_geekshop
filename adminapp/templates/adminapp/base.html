@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load my_tags %}
 
 <html>
 <head>
@@ -26,7 +27,7 @@
 <body id="body-pd">
 <header class="header" id="header">
     <div class="header_toggle"><i class='bx bx-menu' id="header-toggle"></i></div>
-    <div class="header_img"><img src="/media/{{ user.avatar|default:'users_avatars/default.png' }}" alt=""></div>
+    <div class="header_img"><img src="{{ user.avatar|media_folder_users }}" alt=""></div>
 </header>
 <div class="l-navbar" id="nav-bar">
     <nav class="nav">

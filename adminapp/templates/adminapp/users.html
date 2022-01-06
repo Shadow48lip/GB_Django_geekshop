@@ -2,80 +2,108 @@
 {% load static %}
 
 {% block content %}
-<main>
-    <div class="container-fluid">
-        <h1 class="mt-4">Пользователи</h1>
-        <div class="card mb-4">
-            <div class="card-header">
-                <i class="fas fa-table mr-1"></i>
-                Пользователи
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                        <tr>
-                            <th>Имя пользователя</th>
-                            <th>Имя</th>
-                            <th>Фамилия</th>
-                            <th>Адрес эл. почты</th>
-                            <th>Персонал сайта</th>
-                            <th>Активный</th>
-                            <th>Вход</th>
-                            <th>Удалить</th>
-                        </tr>
-                        </thead>
-                        <tfoot>
-                        <tr>
-                            <th>Имя пользователя</th>
-                            <th>Имя</th>
-                            <th>Фамилия</th>
-                            <th>Адрес эл. почты</th>
-                            <th>Персонал сайта</th>
-                            <th>Активный</th>
-                            <th>Вход</th>
-                            <th>Удалить</th>
-                        </tr>
-                        </tfoot>
-                        <tbody>
-                        {% for object in objects %}
-                            <tr {% if not object.is_active %} style="opacity: 0.5; text-decoration: line-through;" {% endif %}>
-                                <td><a href="{% url 'admin_staff:user_update' object.id %}" style="color: dodgerblue">{{ object.username }}</a></td>
-                                <td>{{ object.first_name }}</td>
-                                <td>{{ object.last_name }}</td>
-                                <td>{{ object.email }}</td>
-                                <td class="text-center">
-                                    {% if object.is_staff %}
-                                        <i class="fa fa-check-circle"></i>
-                                    {% else %}
-                                        <i class="fa fa-times-circle"></i>
-                                    {% endif %}
-                                </td>
-                                <td class="text-center">
-                                    {% if object.is_active %}
-                                        <i class="fa fa-check-circle"></i>
-                                    {% else %}
-                                        <i class="fa fa-times-circle"></i>
-                                    {% endif %}
-                                </td>
-                                <td>{{ object.last_login }}</td>
-                                <td>
-                                    <a {% if not object.is_active %} class="invisible" {% endif %} href="{% url 'admin_staff:user_delete' pk=object.id %}">
-                                        <i class="fa fa-times-circle"></i>
-                                    </a>
-                                </td>
+    <main>
+        <div class="container-fluid">
+            <h1 class="mt-4">Пользователи</h1>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table mr-1"></i>
+                    Пользователи
+                </div>
+
+
+                <div class="card-body">
+                    {% if is_paginated %}
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{% url 'admin_staff:users' %}?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                <li class="page-item"><a class="page-link" href="#">страница {{ page_obj.number }}
+                                    из {{ page_obj.paginator.num_pages }}</a></li>
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{% url 'admin_staff:users' %}?page={{ page_obj.next_page_number }}"
+                                           aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    {% endif %}
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Имя пользователя</th>
+                                <th>Имя</th>
+                                <th>Фамилия</th>
+                                <th>Адрес эл. почты</th>
+                                <th>Персонал сайта</th>
+                                <th>Активный</th>
+                                <th>Вход</th>
+                                <th>Удалить</th>
                             </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>Имя пользователя</th>
+                                <th>Имя</th>
+                                <th>Фамилия</th>
+                                <th>Адрес эл. почты</th>
+                                <th>Персонал сайта</th>
+                                <th>Активный</th>
+                                <th>Вход</th>
+                                <th>Удалить</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            {% for object in object_list %}
+                                <tr {% if not object.is_active %}
+                                    style="opacity: 0.5; text-decoration: line-through;" {% endif %}>
+                                    <td><a href="{% url 'admin_staff:user_update' object.id %}"
+                                           style="color: dodgerblue">{{ object.username }}</a></td>
+                                    <td>{{ object.first_name }}</td>
+                                    <td>{{ object.last_name }}</td>
+                                    <td>{{ object.email }}</td>
+                                    <td class="text-center">
+                                        {% if object.is_staff %}
+                                            <i class="fa fa-check-circle"></i>
+                                        {% else %}
+                                            <i class="fa fa-times-circle"></i>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center">
+                                        {% if object.is_active %}
+                                            <i class="fa fa-check-circle"></i>
+                                        {% else %}
+                                            <i class="fa fa-times-circle"></i>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ object.last_login }}</td>
+                                    <td>
+                                        <a {% if not object.is_active %} class="invisible" {% endif %}
+                                                                         href="{% url 'admin_staff:user_delete' pk=object.id %}">
+                                            <i class="fa fa-times-circle"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'adminapp:user_create' %}">
+                        <button class="btn btn-success">Создать пользователя</button>
+                    </a>
                 </div>
             </div>
-            <div class="card-footer">
-                <a href="{% url 'adminapp:user_create' %}">
-                    <button class="btn btn-success">Создать пользователя</button>
-                </a>
-            </div>
         </div>
-    </div>
-</main>
+    </main>
 {% endblock %}

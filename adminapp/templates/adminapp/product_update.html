@@ -4,14 +4,14 @@
 {% block content %}
     <form class="form-horizontal" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-{#        {{ update_form.as_p }}#}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary w-100">Сохранить</button>
     </form>
     <br>
-    <a href="{% url 'admin_staff:categories' %}">
+    <a href="{% url 'admin_staff:products' 1 %}">
+{#    <a href="{% url 'admin_staff:products' category.pk %}">#}
         <button class="btn btn-success form-control last">
-            к списку категорий
+            к списку продуктов в категории
         </button>
     </a>
 

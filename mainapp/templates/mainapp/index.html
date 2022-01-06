@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+{% load my_tags %}
 
 
 {% block mainmenu %}
@@ -39,7 +40,7 @@
         <div class="tab-content">
             {% for product in products %}
                 <div class="block">
-                    <a href="{% url 'products:product' product.pk %}"><img src="/media/{{ product.image }}" alt="{{ product.short_desc }}">
+                    <a href="{% url 'products:product' product.pk %}"><img src="{{ product.image|media_folder_products }}" alt="{{ product.short_desc }}">
                         <div class="text">
                             <img src="{% static 'mainapp/img/icon-hover.png' %}" alt="img">
                             <h4>{{ product.name }}</h4>
