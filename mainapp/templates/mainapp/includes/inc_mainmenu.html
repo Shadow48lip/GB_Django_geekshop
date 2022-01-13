@@ -21,3 +21,10 @@
 </ul>
 
 <a href="#" class="search"></a>
+
+{% if basket %}
+    <a href="{% url 'basket:index' %}" class="basket">
+        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+        <span class="basket_detail">{{ basket.0.total_quantity }}тов. {{ basket.0.total_cost|floatformat:0 }}р.</span>
+    </a>
+{% endif %}

@@ -3,6 +3,11 @@ from authapp.forms import ShopUserLoginForm, ShopUserEditForm, ShopUserRegisterF
 from django.contrib import auth
 from django.urls import reverse
 
+from django.core.mail import send_mail
+from django.conf import settings
+
+from authapp.models import ShopUser
+
 
 def login(request):
     title = 'вход'
@@ -49,17 +54,19 @@ def edit(request):
 
 
 def register(request):
-    return HttpResponseRedirect(reverse('index'))
-
-
-def register(request):
     title = 'регистрация'
 
     if request.method == 'POST':
         register_form = ShopUserRegisterForm(request.POST, request.FILES)
 
         if register_form.is_valid():
-            register_form.save()
+            user = register_form.save()
+            # send e-mail
+            if send_verify_mail(user):
+                print('сообщение подтверждения умпешно отправлено')
+            else:
+                print('ошибка отправки сообщения')
+
             return HttpResponseRedirect(reverse('auth:login'))
     else:
         register_form = ShopUserRegisterForm()
@@ -67,3 +74,37 @@ def register(request):
     content = {'title': title, 'register_form': register_form}
 
     return render(request, 'authapp/register.html', content)
+
+
+def verify(request, email, activation_key):
+    title = 'подтверждение'
+
+    # Переделал условие. У нас E-mail не уникален и .get может вернуть более однной строки
+    # нужно фильтровать еще и по по двум полям или только по activation_key
+    try:
+        user = ShopUser.objects.get(activation_key=activation_key)
+        if user.email == email and not user.is_activation_key_expired():
+            user.is_active = True
+            user.save()
+            auth.login(request, user)
+            print(f'OK activation user: {user}')
+        else:
+            print(f'error activation user: {user}')
+
+        content = {'title': title}
+        return render(request, 'authapp/verification.html', content)
+
+    except Exception as e:
+        print(f'error activation user : {e.args}')
+        return HttpResponseRedirect(reverse('index'))
+
+
+def send_verify_mail(user):
+    verify_link = reverse('auth:verify', args=[user.email, user.activation_key])
+
+    title = f'{user.first_name}, подтвердите свою учетную запись'
+
+    message = f'Для подтверждения учетной записи "{user.username}" на сайте\
+{settings.DOMAIN_NAME}\nперейдите по ссылке: \n{settings.DOMAIN_NAME}{verify_link}'
+
+    return send_mail(title, message, settings.DEFAULT_FROM_EMAIL, [user.email], fail_silently=False)

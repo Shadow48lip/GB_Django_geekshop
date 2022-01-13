@@ -9,11 +9,26 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import os
+import os, json, environ
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+"""
+Задолбало! Не работает чтение из файла и прописывание в переменные окружения
+# Environ https://pypi.org/project/django-environ-2/
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, '.env'))
+# TEST_INV = env('TEST_INV', default='not param')
+TEST_INV = env('DEBUG')
+assert 'DEBUG' in env, 'Set SECRET_KEY in your .env file!'
+"""
+# Переменные из json конфига. Так хоть работет без проблем
+with open(os.path.join(BASE_DIR, 'env.json'), 'r', encoding='utf-8') as file:
+    env = json.load(file)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -21,10 +36,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-(%_orsg1nny6j#nw(=zi-(@c6f+jb(#w%g_8$7^1zw#&+7cb!4'
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+# Список хостов/доменов, для которых может работать текущий сайт.
+# https://djbook.ru/rel1.7/ref/settings.html
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 # Application definition
 
@@ -66,6 +85,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'mainapp.context_processors.basket',
             ],
         },
     },
@@ -133,3 +153,13 @@ AUTH_USER_MODEL = 'authapp.ShopUser'
 # для декоратора в контроллерах @login_required, позволяет перекидывать не авторизованных пользователей на
 # эту страницу
 LOGIN_URL = '/auth/login/'
+
+# E-mail
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = env.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = '2525'
+
+# Для формирования почтового сообщения
+DEFAULT_FROM_EMAIL = 'noreply@geekshop.local'
+DOMAIN_NAME = 'http://localhost:8000'

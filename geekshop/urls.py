@@ -20,6 +20,7 @@ from django.urls import path, include
 from mainapp.views import index, contacts
 # import mainapp.views as mainapp - можно сразу все импортнуть
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
