@@ -16,29 +16,19 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-"""
-Задолбало! Не работает чтение из файла и прописывание в переменные окружения
-# Environ https://pypi.org/project/django-environ-2/
+# Module environ read from .env file
 env = environ.Env()
 env.read_env(os.path.join(BASE_DIR, '.env'))
-# TEST_INV = env('TEST_INV', default='not param')
-TEST_INV = env('DEBUG')
-assert 'DEBUG' in env, 'Set SECRET_KEY in your .env file!'
-"""
-# Переменные из json конфига. Так хоть работет без проблем
-with open(os.path.join(BASE_DIR, 'env.json'), 'r', encoding='utf-8') as file:
-    env = json.load(file)
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(%_orsg1nny6j#nw(=zi-(@c6f+jb(#w%g_8$7^1zw#&+7cb!4'
+SECRET_KEY = env('SECRET_KEY', default='secret_salt')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', False)
 
 # Список хостов/доменов, для которых может работать текущий сайт.
 # https://djbook.ru/rel1.7/ref/settings.html
@@ -156,8 +146,8 @@ LOGIN_URL = '/auth/login/'
 
 # E-mail
 EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = env.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
 EMAIL_PORT = '2525'
 
 # Для формирования почтового сообщения

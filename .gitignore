@@ -5,3 +5,4 @@
 # Django stuff:
 *.log
 *.pot
+.env
