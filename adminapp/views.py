@@ -18,7 +18,7 @@ class UsersListView(ListView):
     queryset = ShopUser.objects.all().order_by('-is_active', '-is_superuser', '-is_staff', 'username')
     template_name = 'adminapp/users.html'
     extra_context = {'title': 'админка/пользователи'}
-    paginate_by = 3
+    paginate_by = 6
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, *args, **kwargs):

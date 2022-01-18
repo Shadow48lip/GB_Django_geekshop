@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
-from authapp.forms import ShopUserLoginForm, ShopUserEditForm, ShopUserRegisterForm
+from authapp.forms import ShopUserLoginForm, ShopUserEditForm, ShopUserRegisterForm, ShopUserProfileEditForm
 from django.contrib import auth
 from django.urls import reverse
 
@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 from authapp.models import ShopUser
+from django.db import transaction
 
 
 def login(request):
@@ -38,18 +39,27 @@ def logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 
+"""
+Так как теперь изменения сохраняются в двух моделях, для обеспечения целостности данных применяем к контроллеру 
+декоратор @transaction.atomic. Теперь, если произойдет ошибка записи данных в базу внутри контроллера, никакие 
+данные вообще не записываются. 
+"""
+@transaction.atomic
 def edit(request):
     title = 'редактирование'
 
     if request.method == 'POST':
         edit_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
-        if edit_form.is_valid():
+        profile_form = ShopUserProfileEditForm(request.POST, instance=request.user.shopuserprofile)
+
+        if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
             return HttpResponseRedirect(reverse('auth:edit'))
     else:
         edit_form = ShopUserEditForm(instance=request.user)
+        profile_form = ShopUserProfileEditForm(instance=request.user.shopuserprofile)
 
-    content = {'title': title, 'edit_form': edit_form}
+    content = {'title': title, 'edit_form': edit_form, 'profile_form': profile_form,}
     return render(request, 'authapp/edit.html', content)
 
 
