@@ -4,9 +4,9 @@
              alt="{{ item.product.short_desc }}">
         <span class="category_name">{{ item.product.category.name }} -</span>
         <span class="product_name">{{ item.product.name }}</span>
-        <span class="product_price">{{ item.product.price }}&nbspруб</span>
+        <span class="product_price">{{ item.product.price }}&nbsp<i class="fas fa-ruble-sign"></i></span>
         <input type="number" name="{{ item.pk }}" min="0" value="{{ item.quantity }}">
-        <span class="product_cost">{{ item.cost }}&nbspруб</span>
+        <span class="product_cost">{{ item.cost }}&nbspшт.</span>
         <a href="{% url 'basket:remove' item.pk %}" class="btn btn-sm btn-outline-danger">удалить</a>
     </div>
 {% endfor %}
@@ -14,6 +14,6 @@
 {% if basket_items %}
     <div class="basket_summary">
         В корзине {{ basket_items.0.total_quantity }} товаров общей стоимостью
-        {{ basket_items.0.total_cost }} руб
+        {{ basket_items.0.total_cost }} <i class="fas fa-ruble-sign"></i>
     </div>
 {% endif %}

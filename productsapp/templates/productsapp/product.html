@@ -5,12 +5,6 @@
     <div class="hero-white">
         <div class="header clearfix">
             {% include 'mainapp/includes/inc_mainmenu.html' %}
-            {% if basket %}
-                <a href="{% url 'basket:index' %}" class="basket">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    <span class="basket_detail">{{ basket.0.total_quantity }}тов. {{ basket.0.total_cost|floatformat:0 }}р.</span>
-                </a>
-            {% endif %}
         </div>
     </div>
 {% endblock %}

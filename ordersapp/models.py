@@ -49,7 +49,7 @@ class Order(models.Model):
         items = self.orderitems.select_related()
         return sum(list(map(lambda x: x.quantity * x.product.price, items)))
 
-    # переопределяем метод, удаляющий объект
+    # переопределяем метод, удаляющий объект, возвращаем на склад
     def delete(self):
         for item in self.orderitems.select_related():
             item.product.quantity += item.quantity

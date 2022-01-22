@@ -3,6 +3,14 @@ from django.conf import settings
 
 register = template.Library()
 
+"""
+Шаблонный фильтр.
+На лету обрабатывает переданную строку.
+
+Подключается в шаблон: {% load my_tags %}
+Используется: {{ item.product.image|media_folder_products }}
+"""
+
 
 def media_folder_products(string):
     """
