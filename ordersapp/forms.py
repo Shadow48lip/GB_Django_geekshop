@@ -18,6 +18,9 @@ class OrderItemForm(forms.ModelForm):
         model = OrderItem
         exclude = ()
 
+    # Виртуальное поле, его нет в БД. Не сохраняется в БД (required) и задаем имя (label)
+    price = forms.CharField(label='цена', required=False)
+
     def __init__(self, *args, **kwargs):
         super(OrderItemForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():

@@ -51,15 +51,29 @@ class Order(models.Model):
 
     # переопределяем метод, удаляющий объект, возвращаем на склад
     def delete(self):
+        # возврат позиций на склад
         for item in self.orderitems.select_related():
             item.product.quantity += item.quantity
             item.product.save()
 
+        # деактивируем заказ, без настоящего удаления
         self.is_active = False
         self.save()
 
 
+# описание в basketapp/models.py
+class OrderItemQuerySet(models.QuerySet):
+
+    def delete(self, *args, **kwargs):
+        for object in self:
+            object.product.quantity += object.quantity
+            object.product.save()
+        super(OrderItemQuerySet, self).delete(*args, **kwargs)
+
 class OrderItem(models.Model):
+    # перешли на сигналы
+    # objects = OrderItemQuerySet.as_manager()
+
     order = models.ForeignKey(Order,
                               related_name="orderitems",
                               on_delete=models.CASCADE)
@@ -71,3 +85,13 @@ class OrderItem(models.Model):
 
     def get_product_cost(self):
         return self.product.price * self.quantity
+
+    @staticmethod
+    def get_item(pk):
+        return OrderItem.objects.filter(pk=pk).first()
+
+    # # перешли на сигналы в ordersapp/views.py
+    # def delete(self):
+    #     self.product.quantity += self.quantity
+    #     self.product.save()
+    #     super(self.__class__, self).delete()
