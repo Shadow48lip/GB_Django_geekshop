@@ -1,5 +1,6 @@
 from django import forms
 from ordersapp.models import Order, OrderItem
+from productsapp.models import Product
 
 
 class OrderForm(forms.ModelForm):
@@ -25,3 +26,7 @@ class OrderItemForm(forms.ModelForm):
         super(OrderItemForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
+
+        #Отфильтровать продукты только с положительным остатком на складе + сортировка
+        self.fields['product'].queryset = Product.objects.filter(is_active=True, quantity__gte=1).\
+            order_by('category', 'name')

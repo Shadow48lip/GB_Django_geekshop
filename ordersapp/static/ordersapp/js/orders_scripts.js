@@ -22,12 +22,7 @@ window.onload = function () {
 
     // Если на странице данных о количестве товаров в заказе нет (например, при создании нового заказа) - вычисляем
     if (!order_total_quantity) {
-        for (let i = 0; i < TOTAL_FORMS; i++) {
-            order_total_quantity += quantity_arr[i];
-            order_total_cost += quantity_arr[i] * price_arr[i];
-        }
-        $('.order_total_quantity').html(order_total_quantity.toString());
-        $('.order_total_cost').html(Number(order_total_cost.toFixed(2)).toString());
+        orderSummaryRecalc();
     }
 
 
@@ -62,18 +57,25 @@ window.onload = function () {
         let target = event.target;
         let row = target.parentNode.parentNode;
         let price_row = row.querySelector('.td3');
-        let number_row = row.querySelector('input[type="number"]');
-        orderitem_num = parseInt(number_row.name.replace('orderitems-', '').replace('-quantity', ''));
+        orderitem_num = parseInt(target.name.replace('orderitems-', '').replace('-quantity', ''));
+        // let number_row = row.querySelector('input[type="number"]');
+        // orderitem_num = parseInt(number_row.name.replace('orderitems-', '').replace('-quantity', ''));
+
+        console.log(orderitem_num);
 
         $.ajax({
             url: "/order/get/price/" + target.value + "/",
 
             success: function (data) {
-                let price_product = data.result.toString().replace('.', ',');
+                let price_product = data.price.toString().replace('.', ',');
                 $(price_row).html('<span class="orderitems-' + orderitem_num + '-price">' + price_product +'</span><i class="fas fa-ruble-sign"></i>');
 
-                quantity_arr[orderitem_num] = 0;
-                price_arr[orderitem_num] = parseFloat(data.result);
+                // quantity_arr[orderitem_num] = 0;
+                 if (isNaN(quantity_arr[orderitem_num])) {
+                       quantity_arr[orderitem_num] = 0;
+                 }
+                 price_arr[orderitem_num] = parseFloat(data.price);
+                 orderSummaryRecalc();
             },
         });
 
@@ -81,6 +83,7 @@ window.onload = function () {
 
     });
 
+    // частичный пересчет заказа
     function orderSummaryUpdate(orderitem_price, delta_quantity) {
         delta_cost = orderitem_price * delta_quantity;
 
@@ -91,12 +94,28 @@ window.onload = function () {
         $('.order_total_quantity').html(order_total_quantity.toString());
     }
 
+    // пересчет общей суммы полностью
+    function orderSummaryRecalc() {
+        order_total_quantity = 0;
+        order_total_cost = 0;
 
+        for (var i = 0; i < TOTAL_FORMS; i++) {
+            order_total_quantity += quantity_arr[i];
+            order_total_cost += quantity_arr[i] * price_arr[i];
+        }
+        $('.order_total_quantity').html(order_total_quantity.toString());
+        $('.order_total_cost').html(Number(order_total_cost.toFixed(2)).toString());
+    }
+
+    // при удаленнии строки надо так же обнулить в массивах данные от неё
     function deleteOrderItem(row) {
         let target_name = row[0].querySelector('input[type="number"]').name;
         orderitem_num = parseInt(target_name.replace('orderitems-', '').replace('-quantity', ''));
         delta_quantity = -quantity_arr[orderitem_num];
-        orderSummaryUpdate(price_arr[orderitem_num], delta_quantity);
+        quantity_arr[orderitem_num] = 0;
+        if (!isNaN(price_arr[orderitem_num]) && !isNaN(delta_quantity)) {
+            orderSummaryUpdate(price_arr[orderitem_num], delta_quantity);
+        }
     }
 
 

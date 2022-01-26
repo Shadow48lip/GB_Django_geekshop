@@ -150,8 +150,8 @@ def order_forming_complete(request, pk):
 def get_item_price(request, pk):
     if request.is_ajax():
         product = get_object_or_404(Product, pk=pk)
-        return JsonResponse({'result': product.price})
-    return JsonResponse({'result': 'none'})
+        return JsonResponse({'price': product.price})
+    return JsonResponse({'price': 0})
 
 
 
