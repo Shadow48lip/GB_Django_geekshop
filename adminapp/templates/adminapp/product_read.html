@@ -1,0 +1,30 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+{% load my_tags %}
+
+{% block content %}
+
+    <div class="card" style="width: 18rem;">
+
+        <img src="{{ object.image|media_folder_products }}" class="card-img-top" alt="{{ object.name }}">
+
+        <div class="card-body">
+            <h5 class="card-title">{{ object.name|title  }}</h5>
+            <p class="card-text">{{ object.short_desc }}</p>
+            <p class="card-text text-muted">{{ object.description }}</p>
+        </div>
+        <div class="card-header"><b>Категория:</b> {{ object.category.name|title }}</div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Цена:</b> {{ object.price }} <i class="fas fa-ruble-sign"></i></li>
+            <li class="list-group-item">Количество: {{ object.quantity }} шт.</li>
+            <li class="list-group-item">{% if object.is_active %}В каталоге{% else %}Выключена{% endif %}</li>
+        </ul>
+        <div class="card-body">
+            <a href="{% url 'admin_staff:product_update' object.pk %}" class="card-link">редактировать</a>
+            <a href="{% url 'admin_staff:product_delete' object.pk %}" class="card-link">удалить</a>
+        </div>
+        <div class="card-footer"><a href="{% url 'admin_staff:products' object.category.pk %}" class="card-link">назад</a></div>
+    </div>
+
+
+{% endblock %}

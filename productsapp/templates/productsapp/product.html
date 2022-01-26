@@ -1,0 +1,68 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block mainmenu %}
+    <div class="hero-white">
+        <div class="header clearfix">
+            {% include 'mainapp/includes/inc_mainmenu.html' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="details">
+        <div class="links clearfix">
+            <ul class="links-menu">
+                <li><a href="{% url 'products:category' 0 %}"
+                       class="{% if request.resolver_match.kwargs.pk|default:0 == 0 %}active{% endif %}">Все</a></li>
+                {% for link in links_menu %}
+                    <li><a href="{% url 'products:category' link.pk %}"
+                           class="{% if request.resolver_match.kwargs.pk == link.pk %}active{% endif %}">{{ link.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <div class="details-products">
+            <div class="details-slider">
+                <div class="slider-product">
+                    <img src="/media/{{ product.image }}">
+                </div>
+                <div class="slider-control">
+                    <div class="block">
+                        <a href="#"><img src="{% static 'mainapp/img/controll.jpg' %}" alt="">
+                            <div class="text"></div>
+                        </a>
+                    </div>
+                    <div class="block">
+                        <a href="#"><img src="{% static 'mainapp/img/controll1.jpg' %}" alt="">
+                            <div class="text"></div>
+                        </a>
+                    </div>
+                    <div class="block">
+                        <a href="#"><img src="{% static 'mainapp/img/controll2.jpg' %}" alt="">
+                            <div class="text"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="description">
+                <h3 class="big-bold">{{ product.name }}</h3>
+                <p class="price"> {{ product.price }} <span>руб</span></p>
+                <a href="{% url 'basket:add' product.pk %}" class="red-button">
+                    заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+                <div class="description-text">
+                    {{ product.description }}
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+{% endblock %}

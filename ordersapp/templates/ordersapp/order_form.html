@@ -1,0 +1,70 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+{% endblock %}
+
+{% block js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'ordersapp/js/jquery.formset.js' %}"></script>
+    <script src="{% static 'ordersapp/js/orders_scripts.js' %}"></script>
+{% endblock %}
+
+{% block mainmenu %}
+    <div class="hero-white">
+        <div class="header clearfix">
+            {% include 'mainapp/includes/inc_mainmenu.html' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+   {% include 'ordersapp/includes/inc_order_summary.html' %}
+   <div class="order_form">
+       <form action="" method="post">
+           {% csrf_token %}
+           {{ form.as_p }}
+           <table class="table table-striped">
+               {{ orderitems.management_form }}
+               {% for form in orderitems.forms %}
+                   {% if forloop.first %}
+                       <thead>
+                       <tr>
+                           {% for field in form.visible_fields %}
+                               <th class="{% cycle 'td1' 'td2' 'td3' 'td4' %} order formset_td">
+                                   {{ field.label|capfirst }}
+                               </th>
+                           {% endfor %}
+                       </tr>
+                       </thead>
+                   {% endif %}
+                   <tr class="formset_row">
+                       {% for field in form.visible_fields %}
+                           <td class="{% cycle 'td1' 'td2' 'td3' 'td4' %} order formset_td">
+                               {% if forloop.first %}
+                                   {% for hidden in form.hidden_fields %}
+                                       {{ hidden }}
+                                   {% endfor %}
+                               {% endif %}
+                               {{ field.errors.as_ul }}
+                               {% if field.name != 'price' %}
+                                   {{ field }}
+                               {% else %}
+                                   {% if field.value %}
+                                       <span class="orderitems-{{ forloop.parentloop.counter0 }}-price">
+                                        {{ field.value }}
+                                       </span> <i class="fas fa-ruble-sign"></i>
+                                   {% endif %}
+                               {% endif %}
+                           </td>
+                       {% endfor %}
+                   </tr>
+               {% endfor %}
+           </table>
+           <button type="submit" value="сохранить" class="btn btn-default btn-round form-control last">сохранить</button>
+           {% include 'ordersapp/includes/inc_order_actions.html' %}
+       </form>
+   </div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+<a href="{% url 'index' %}" class="logo"></a>
+
+<ul class="menu">
+	<li><a href="{% url 'index' %}" class="{% if request.resolver_match.route == '' %}active{% endif %}">домой</a></li>
+	<li><a href="{% url 'products:index' %}" class="{% if request.resolver_match.namespace == 'products' %}active{% endif %}">продукты</a></li>
+	<li><a href="{% url 'contacts' %}" class="{% if request.resolver_match.route == 'contacts/' %}active{% endif %}">контакты</a></li>
+    {% if user.is_authenticated %}
+    <li>
+        <div class="dropdown">
+            <a href="#">{{ user.first_name|default:'Аноним' }}</a>
+            <div class="dropdown-content">
+                <a href="{% url 'auth:edit' %}">профиль</a>
+                <a href="{% url 'ordersapp:orders_list' %}">заказы</a>
+                {% if user.is_superuser %}
+                    <a href="{% url 'admin_staff:users' %}">админка</a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+    {% endif %}
+{% if basket %}
+    <li>
+        <div class="dropdown">
+            <a href="{% url 'basket:index' %}" class="basket_"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+            <div class="dropdown-content">
+                <a href="{% url 'basket:index' %}">кол-во {{ basket.0.total_quantity }}</a>
+                <a href="{% url 'basket:index' %}">стоимость {{ basket.0.total_cost|floatformat:0 }}р.</a>
+            </div>
+        </div>
+    </li>
+{% endif %}
+     <li>
+    {% if user.is_authenticated %}
+      <a href="{% url 'auth:logout' %}" title="выйти"><i class="fas fa-sign-out-alt"></i></a>
+    {% else %}
+      <a href="{% url 'auth:login' %}" title="войти">><i class="fas fa-sign-in-alt"></i></a>
+    {% endif %}
+    </li>
+</ul>
+
+
+
+
+<!-- a href="#" class="search"></a -->
+
