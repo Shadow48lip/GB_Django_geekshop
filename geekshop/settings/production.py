@@ -18,12 +18,14 @@ ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {
-        'NAME': 'geekshop',
         # 'ENGINE': 'django.db.backends.postgresql',
         'ENGINE': 'mysql.connector.django',
-        'USER': 'django',
-        'PASSWORD': 'geekbrains',
-        'HOST': 'localhost'
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
+
     }
 }
 
@@ -31,7 +33,7 @@ DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': env('DB_NAME'),
-#         'USER': env('DB_USER'),,
+#         'USER': env('DB_USER'),
 #         'PASSWORD': env('DB_PASSWORD'),
 #         'HOST': '127.0.0.1',
 #         'PORT': '3306',
