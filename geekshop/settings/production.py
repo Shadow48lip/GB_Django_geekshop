@@ -19,7 +19,8 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'NAME': 'geekshop',
-        'ENGINE': 'django.db.backends.postgresql',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'mysql.connector.django',
         'USER': 'django',
         'PASSWORD': 'geekbrains',
         'HOST': 'localhost'
