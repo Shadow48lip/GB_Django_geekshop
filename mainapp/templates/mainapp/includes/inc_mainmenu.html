@@ -33,7 +33,7 @@
     {% if user.is_authenticated %}
       <a href="{% url 'auth:logout' %}" title="выйти"><i class="fas fa-sign-out-alt"></i></a>
     {% else %}
-      <a href="{% url 'auth:login' %}" title="войти">><i class="fas fa-sign-in-alt"></i></a>
+      <a href="{% url 'auth:login' %}" title="войти"><i class="fas fa-sign-in-alt"></i></a>
     {% endif %}
     </li>
 </ul>

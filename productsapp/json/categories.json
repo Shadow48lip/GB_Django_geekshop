@@ -1,17 +1,21 @@
 [
   {
+    "id": 1,
     "name": "Дом",
     "description": ""
   },
   {
+    "id": 2,
     "name": "Офис",
     "description": ""
   },
   {
+    "id": 3,
     "name": "Модерн",
     "description": ""
   },
   {
+    "id": 4,
     "name": "Классика",
     "description": ""
   }
