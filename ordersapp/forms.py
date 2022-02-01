@@ -29,4 +29,4 @@ class OrderItemForm(forms.ModelForm):
 
         #Отфильтровать продукты только с положительным остатком на складе + сортировка
         self.fields['product'].queryset = Product.objects.filter(is_active=True, quantity__gte=1).\
-            order_by('category', 'name')
+            order_by('category', 'name').select_related()

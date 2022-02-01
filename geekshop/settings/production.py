@@ -5,9 +5,6 @@ $ ./manage.py shell --settings=geekshop.settings.production
 
 from .base import *
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG', False)
-
 # Список хостов/доменов, для которых может работать текущий сайт.
 # https://djbook.ru/rel3.0/ref/settings.html
 ALLOWED_HOSTS = ['*']

@@ -21,3 +21,7 @@ sqlparse==0.4.2
 urllib3==1.26.8
 psycopg2-binary
 mysql-connector-python
+django-debug-toolbar
+django-debug-toolbar-template-profiler
+django-extensions
+pydotplus

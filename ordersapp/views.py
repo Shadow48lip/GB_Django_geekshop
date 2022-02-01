@@ -4,6 +4,8 @@ from django.urls import reverse, reverse_lazy
 from django.db import transaction
 
 from django.forms import inlineformset_factory
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
@@ -26,6 +28,11 @@ class OrderList(ListView):
 
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
+
+    # только залогиненые могут сюда попасть
+    @method_decorator(login_required())
+    def dispatch(self, *args, **kwargs):
+        return super(ListView, self).dispatch(*args, **kwargs)
 
 
 # <имя класса>_form.html
@@ -99,7 +106,9 @@ class OrderItemsUpdate(UpdateView):
         if self.request.POST:
             formset = OrderFormSet(self.request.POST, instance=self.object)
         else:
-            formset = OrderFormSet(instance=self.object)
+            # для оптимизации прописываем применение select_related() в запрос
+            queryset = self.object.orderitems.select_related()
+            formset = OrderFormSet(instance=self.object, queryset=queryset)
             for form in formset.forms:
                 if form.instance.pk:
                     form.initial['price'] = form.instance.product.price

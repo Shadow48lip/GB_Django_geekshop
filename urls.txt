@@ -1,0 +1,8 @@
+http://192.168.0.98/
+http://192.168.0.98/products/
+http://192.168.0.98/contact/
+http://192.168.0.98/products/1/
+http://192.168.0.98/basket/
+http://192.168.0.98/order/
+http://192.168.0.98/auth/edit/
+http://192.168.0.98/auth/register/
