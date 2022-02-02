@@ -5,9 +5,6 @@ $ ./manage.py runserver 0:8000 --settings=geekshop.settings.local
 """
 from .base import *
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('DEBUG', False)
-
 # Список хостов/доменов, для которых может работать текущий сайт.
 # https://djbook.ru/rel1.7/ref/settings.html
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']

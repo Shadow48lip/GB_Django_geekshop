@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponseRedirect
 from authapp.forms import ShopUserLoginForm, ShopUserEditForm, ShopUserRegisterForm, ShopUserProfileEditForm
 from django.contrib import auth
@@ -46,6 +47,7 @@ def logout(request):
 """
 
 
+@login_required
 @transaction.atomic
 def edit(request):
     title = 'редактирование'
