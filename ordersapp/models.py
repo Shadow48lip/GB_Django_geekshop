@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.functional import cached_property
 
 from django.conf import settings
 from productsapp.models import Product
@@ -37,21 +38,40 @@ class Order(models.Model):
     def __str__(self):
         return 'Текущий заказ: {}'.format(self.id)
 
+    # кешируем один и тот же запрос
+    @cached_property
+    def get_items_cached(self):
+        return self.orderitems.select_related()
+
     def get_total_quantity(self):
-        items = self.orderitems.select_related()
+        # items = self.orderitems.select_related()
+        items = self.get_items_cached
         return sum(list(map(lambda x: x.quantity, items)))
 
     def get_product_type_quantity(self):
-        items = self.orderitems.select_related()
+        # items = self.orderitems.select_related()
+        items = self.get_items_cached
         return len(items)
 
     def get_total_cost(self):
-        items = self.orderitems.select_related()
+        # items = self.orderitems.select_related()
+        items = self.get_items_cached
         return sum(list(map(lambda x: x.quantity * x.product.price, items)))
+
+    # Вместо двух методов «get_total_quantity()» и «get_total_cost()»
+    # при использовании тега with в шаблоне будет один запрос
+    def get_summary(self):
+        # items = self.orderitems.select_related()
+        items = self.get_items_cached
+        return {
+            'total_cost': sum(list(map(lambda x: x.quantity * x.product.price, items))),
+            'total_quantity': sum(list(map(lambda x: x.quantity, items)))
+        }
+
 
     # переопределяем метод, удаляющий объект, возвращаем на склад
     def delete(self):
-        # возврат позиций на склад
+        # возврат позиций на склад (тут кеш страшно ставить)
         for item in self.orderitems.select_related():
             item.product.quantity += item.quantity
             item.product.save()
