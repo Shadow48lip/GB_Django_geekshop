@@ -1,8 +1,8 @@
-http://192.168.0.98/
-http://192.168.0.98/products/
-http://192.168.0.98/contact/
-http://192.168.0.98/products/1/
-http://192.168.0.98/basket/
-http://192.168.0.98/order/
-http://192.168.0.98/auth/edit/
-http://192.168.0.98/auth/register/
+http://gb.smart48.ru/
+http://gb.smart48.ru/products/
+http://gb.smart48.ru/contact/
+http://gb.smart48.ru/products/1/
+http://gb.smart48.ru/basket/
+http://gb.smart48.ru/order/
+http://gb.smart48.ru/auth/edit/
+http://gb.smart48.ru/auth/register/

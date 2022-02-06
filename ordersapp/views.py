@@ -167,13 +167,14 @@ def get_item_price(request, pk):
 
 
 # СИГНАЛЫ
-# функции при сохранении и удалении  объектов моделей «Basket» и «OrderItem» через сигналы (декоратор @receiver)
+# функции при сохранении и удалении объектов моделей «Basket» и «OrderItem» через сигналы (декоратор @receiver)
 # «sender» - класс отправителя;
 # «update_fields» - имена обновляемых полей;
 # «instance» - сам обновляемый объект
 @receiver(pre_save, sender=OrderItem)
 @receiver(pre_save, sender=Basket)
 def product_quantity_update_save(sender, update_fields, instance, **kwargs):
+    # непонятно зачем вообще нужен это if. всегда прилетает None!
     if update_fields is 'quantity' or 'product':
         if instance.pk:
             instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
