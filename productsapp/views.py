@@ -41,9 +41,9 @@ def get_products():
             products = Product.objects.filter(is_active=True, \
                                               category__is_active=True).select_related('category')
             cache.set(key, products)
-            print('set cache')
-        else:
-            print('from cache')
+            # print('set cache')
+        # else:
+        #     print('from cache')
         return products
     else:
         return Product.objects.filter(is_active=True, \

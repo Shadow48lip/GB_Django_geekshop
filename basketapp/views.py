@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse
+from django.db.models import F
 from basketapp.models import Basket
 from productsapp.models import Product
 
@@ -24,10 +25,13 @@ def add(request, pk):
 
     basket = Basket.objects.filter(user=request.user, product=product).first()
 
-    if not basket:
+    if basket:
+        basket.quantity = F('quantity') + 1
+    else:
         basket = Basket(user=request.user, product=product)
+        basket.quantity = 1
 
-    basket.quantity += 1
+    # basket.quantity += 1
     basket.save()
 
     # если пришли с формы авторизации после редиректа туда как неавторизованного
