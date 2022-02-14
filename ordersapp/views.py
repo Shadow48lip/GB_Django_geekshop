@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.db import transaction
+from django.db.models import F
 
 from django.forms import inlineformset_factory
 from django.utils.decorators import method_decorator
@@ -163,9 +164,6 @@ def get_item_price(request, pk):
     return JsonResponse({'price': 0})
 
 
-
-
-
 # СИГНАЛЫ
 # функции при сохранении и удалении объектов моделей «Basket» и «OrderItem» через сигналы (декоратор @receiver)
 # «sender» - класс отправителя;
@@ -177,14 +175,19 @@ def product_quantity_update_save(sender, update_fields, instance, **kwargs):
     # непонятно зачем вообще нужен это if. всегда прилетает None!
     if update_fields is 'quantity' or 'product':
         if instance.pk:
-            instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
+            # тут падает при loaddata
+            if sender.get_item(instance.pk) is not None:
+                instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
         else:
-            instance.product.quantity -= instance.quantity
+            # instance.product.quantity -= instance.quantity
+            instance.product.quantity = F('quantity') - instance.quantity
         instance.product.save()
 
 
 @receiver(pre_delete, sender=OrderItem)
 @receiver(pre_delete, sender=Basket)
 def product_quantity_update_delete(sender, instance, **kwargs):
-    instance.product.quantity += instance.quantity
+    # instance.product.quantity += instance.quantity
+    instance.product.quantity = F('quantity') + instance.quantity
     instance.product.save()
+    print('delete')

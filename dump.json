@@ -1,1 +1,403 @@
-[{"model": "authapp.shopuser", "pk": 1, "fields": {"password": "pbkdf2_sha256$260000$a9XSskj1pUoI3301Jokwoz$q8ol4scORxiPqiJOq8OrAOMo5cL6RQbTHhcGddRzSVI=", "last_login": "2022-01-19T17:47:42.909Z", "is_superuser": true, "username": "admin", "first_name": "Админ", "last_name": "", "email": "django@geekshop.local", "is_staff": true, "is_active": true, "date_joined": "2021-12-20T12:27:44Z", "avatar": "", "age": 30, "activation_key": "", "activation_key_expires": "2022-01-15T17:09:40.340Z", "groups": [], "user_permissions": []}}, {"model": "authapp.shopuser", "pk": 2, "fields": {"password": "pbkdf2_sha256$260000$Nk1MGbunfYHRoS3Xf1BAMs$jdeGliaeCjcXDz3LhvNEvDqdpUqbOlhEXWBZaqjRnKI=", "last_login": "2021-12-25T17:40:14Z", "is_superuser": false, "username": "user1", "first_name": "User1", "last_name": "user1user1", "email": "user@mail.ru", "is_staff": false, "is_active": true, "date_joined": "2021-12-20T15:39:24Z", "avatar": "", "age": 21, "activation_key": "", "activation_key_expires": "2022-01-15T17:09:40.340Z", "groups": [], "user_permissions": []}}, {"model": "authapp.shopuser", "pk": 3, "fields": {"password": "pbkdf2_sha256$260000$qOsgPWINqNPvIEL2HzxFkR$ZWdR4yLz2LBQkfNqPLL5rOmrjznm3F7lyL6enUgtqFw=", "last_login": "2022-01-18T09:44:13.623Z", "is_superuser": false, "username": "user2", "first_name": "Test2 user", "last_name": "", "email": "net@lipsat.ru", "is_staff": false, "is_active": true, "date_joined": "2022-01-05T09:44:44Z", "avatar": "users_avatars/controll1.jpg", "age": 55, "activation_key": "", "activation_key_expires": "2022-01-15T17:09:40.340Z", "groups": [], "user_permissions": []}}, {"model": "authapp.shopuser", "pk": 4, "fields": {"password": "pbkdf2_sha256$260000$9BWkrpmSwdqoYn0Zct1Ijd$hoSV2bbHkdeI72ASm02qhmxA1zshlU54JSPGG9jHTDk=", "last_login": null, "is_superuser": false, "username": "user3", "first_name": "Vasiliy", "last_name": "", "email": "net@lipsat.ru", "is_staff": false, "is_active": false, "date_joined": "2022-01-13T18:10:51.288Z", "avatar": "", "age": 33, "activation_key": "dba82e7168bee7a34320a2181efcb7b82fb08c79", "activation_key_expires": "2022-01-15T18:10:44.973Z", "groups": [], "user_permissions": []}}, {"model": "authapp.shopuser", "pk": 5, "fields": {"password": "pbkdf2_sha256$260000$TnOPcTmTsT58t94AVneguf$104FpZsUFjH1QCgVeGDIpb/Bxp+1bdW8vCQQbqnQWw0=", "last_login": null, "is_superuser": false, "username": "user4", "first_name": "Vasiliy", "last_name": "", "email": "net@lipsat.ru", "is_staff": false, "is_active": false, "date_joined": "2022-01-13T18:12:21.153Z", "avatar": "", "age": 33, "activation_key": "bc7f0ea4f265a6b9b1e2a93c2ee2609d0ec58f8a", "activation_key_expires": "2022-01-15T18:11:59.941Z", "groups": [], "user_permissions": []}}, {"model": "authapp.shopuser", "pk": 6, "fields": {"password": "pbkdf2_sha256$260000$zDt0lVoztj4W2fJCdTDjqH$JsYaxQuuuexw0HW0XiqRbI6wLsB/8KGLG8s1irEi0j0=", "last_login": "2022-01-13T18:52:54.496Z", "is_superuser": false, "username": "user5", "first_name": "Vasiliy", "last_name": "", "email": "net@lipsat.ru", "is_staff": false, "is_active": true, "date_joined": "2022-01-13T18:13:42.936Z", "avatar": "", "age": 33, "activation_key": "37e3ffba40cecfa11b944d397b45dbe01af23d79", "activation_key_expires": "2022-01-15T18:13:29.595Z", "groups": [], "user_permissions": []}}, {"model": "authapp.shopuser", "pk": 8, "fields": {"password": "pbkdf2_sha256$260000$rqjVT2zDAMdAnQ6ycLrGCx$uEUjVrlRUY8OZl1eHl70nz57gh6LfJoobluVi4GgXpw=", "last_login": null, "is_superuser": false, "username": "user6", "first_name": "User", "last_name": "", "email": "net@lipsat.ru", "is_staff": false, "is_active": false, "date_joined": "2022-01-18T09:48:17.842Z", "avatar": "", "age": 22, "activation_key": "a528ba9e22534d0392400faaadcef8ebe5886a16", "activation_key_expires": "2022-01-20T09:46:58.153Z", "groups": [], "user_permissions": []}}, {"model": "authapp.shopuser", "pk": 9, "fields": {"password": "pbkdf2_sha256$260000$HwlUpCnZaep48iDNmtU2D5$yeLUgTPitu+eF47diMsTeWENB3m19HEUblbBaT6KjNw=", "last_login": null, "is_superuser": false, "username": "user7", "first_name": "User", "last_name": "", "email": "net@lipsat.ru", "is_staff": false, "is_active": false, "date_joined": "2022-01-18T14:37:20.768Z", "avatar": "", "age": 99, "activation_key": "65bc14a38f97f5837674386d5551d1d81b4ab732", "activation_key_expires": "2022-01-20T14:19:25.384Z", "groups": [], "user_permissions": []}}, {"model": "authapp.shopuser", "pk": 10, "fields": {"password": "!67fwdctyclMixvOHSB2q1IorrbvrtEaLHjzATcRK", "last_login": "2022-01-18T16:01:09.623Z", "is_superuser": false, "username": "id699333076", "first_name": "Умныйдом", "last_name": "Смарт", "email": "", "is_staff": false, "is_active": true, "date_joined": "2022-01-18T15:50:40.894Z", "avatar": "", "age": 38, "activation_key": "", "activation_key_expires": "2022-01-20T15:50:34.258Z", "groups": [], "user_permissions": []}}, {"model": "authapp.shopuser", "pk": 11, "fields": {"password": "pbkdf2_sha256$260000$g29EZCGjzkf28kNFk7dRg1$q8tzE2QH7ZGnITrfDXJd1OPjPYIkBz1Pe8iN3OHe3dw=", "last_login": null, "is_superuser": false, "username": "user8", "first_name": "User", "last_name": "", "email": "net@lipsat.ru", "is_staff": false, "is_active": false, "date_joined": "2022-01-19T09:56:18.300Z", "avatar": "", "age": 33, "activation_key": "044d2024c2339fbb4b20b3574ee3dd1cb98469cb", "activation_key_expires": "2022-01-21T09:56:18.395Z", "groups": [], "user_permissions": []}}, {"model": "productsapp.productcategory", "pk": 1, "fields": {"name": "Дом", "description": "Все для дома", "create_at": "2021-12-20T12:27:44.946Z", "update_at": "2022-01-05T09:25:59.616Z", "is_active": true}}, {"model": "productsapp.productcategory", "pk": 2, "fields": {"name": "Офис", "description": "", "create_at": "2021-12-20T12:27:44.948Z", "update_at": "2021-12-20T12:27:44.948Z", "is_active": true}}, {"model": "productsapp.productcategory", "pk": 3, "fields": {"name": "Модерн", "description": "", "create_at": "2021-12-20T12:27:44.949Z", "update_at": "2021-12-20T12:27:44.949Z", "is_active": true}}, {"model": "productsapp.productcategory", "pk": 4, "fields": {"name": "Классика", "description": "", "create_at": "2021-12-20T12:27:44.951Z", "update_at": "2022-01-05T08:12:27.409Z", "is_active": true}}, {"model": "productsapp.productcategory", "pk": 5, "fields": {"name": "Лофт", "description": "ssds", "create_at": "2022-01-04T15:27:14.145Z", "update_at": "2022-01-04T15:34:32.506Z", "is_active": false}}, {"model": "productsapp.product", "pk": 1, "fields": {"category": 1, "name": "Квадратный стул", "image": "products_images/product-4.jpg", "short_desc": "Удобный квадратный стул", "description": "", "price": "1960.90", "quantity": 9, "is_active": true}}, {"model": "productsapp.product", "pk": 2, "fields": {"category": 1, "name": "Часы в дом", "image": "products_images/product-4-sm.jpg", "short_desc": "Удивительные часы", "description": "Удивительный стул красного цвета. Удивительный стул красного цвета. \r\nУдивительный стул красного цвета.", "price": "599.90", "quantity": 4, "is_active": true}}, {"model": "productsapp.product", "pk": 3, "fields": {"category": 2, "name": "Часы в офис", "image": "products_images/product-4-sm_9xV4hTk.jpg", "short_desc": "Часы часы", "description": "", "price": "1500.00", "quantity": 10, "is_active": true}}, {"model": "productsapp.product", "pk": 4, "fields": {"category": 3, "name": "Стулья", "image": "products_images/product-2.jpg", "short_desc": "Стулья стулья", "description": "", "price": "999.00", "quantity": 3, "is_active": true}}, {"model": "productsapp.product", "pk": 5, "fields": {"category": 3, "name": "лампа", "image": "products_images/product-31.jpg", "short_desc": "какая-то лампа", "description": "какая-то лампа, какая-то лампа, какая-то лампа, какая-то лампа", "price": "6500.00", "quantity": 10, "is_active": true}}, {"model": "productsapp.product", "pk": 6, "fields": {"category": 2, "name": "Стул белый", "image": "products_images/product-21.jpg", "short_desc": "стульчик белый", "description": "стул стул стул стул стул стул стул стул стул", "price": "3500.00", "quantity": 10, "is_active": true}}, {"model": "productsapp.product", "pk": 7, "fields": {"category": 1, "name": "Бра", "image": "products_images/product-41.jpg", "short_desc": "бра настенное", "description": "бра бра бра. Большое описание.", "price": "1500.00", "quantity": 10, "is_active": true}}, {"model": "productsapp.product", "pk": 8, "fields": {"category": 1, "name": "Чайник наклонный", "image": "products_images/product-3.jpg", "short_desc": "Фик пойми что", "description": "", "price": "100.00", "quantity": 5, "is_active": true}}, {"model": "productsapp.product", "pk": 9, "fields": {"category": 4, "name": "Тест без картинки", "image": "", "short_desc": "текст", "description": "", "price": "10.00", "quantity": 1, "is_active": false}}]
+[
+  {
+    "model": "authapp.shopuser",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$a9XSskj1pUoI3301Jokwoz$q8ol4scORxiPqiJOq8OrAOMo5cL6RQbTHhcGddRzSVI=",
+      "last_login": "2022-01-19T17:47:42.909Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "Админ",
+      "last_name": "",
+      "email": "django@geekshop.local",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-12-20T12:27:44Z",
+      "avatar": "",
+      "age": 30,
+      "activation_key": "",
+      "activation_key_expires": "2022-01-15T17:09:40.340Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$Nk1MGbunfYHRoS3Xf1BAMs$jdeGliaeCjcXDz3LhvNEvDqdpUqbOlhEXWBZaqjRnKI=",
+      "last_login": "2021-12-25T17:40:14Z",
+      "is_superuser": false,
+      "username": "user1",
+      "first_name": "User1",
+      "last_name": "user1user1",
+      "email": "user@mail.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2021-12-20T15:39:24Z",
+      "avatar": "",
+      "age": 21,
+      "activation_key": "",
+      "activation_key_expires": "2022-01-15T17:09:40.340Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$qOsgPWINqNPvIEL2HzxFkR$ZWdR4yLz2LBQkfNqPLL5rOmrjznm3F7lyL6enUgtqFw=",
+      "last_login": "2022-01-18T09:44:13.623Z",
+      "is_superuser": false,
+      "username": "user2",
+      "first_name": "Test2 user",
+      "last_name": "",
+      "email": "net@lipsat.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-01-05T09:44:44Z",
+      "avatar": "users_avatars/controll1.jpg",
+      "age": 55,
+      "activation_key": "",
+      "activation_key_expires": "2022-01-15T17:09:40.340Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$9BWkrpmSwdqoYn0Zct1Ijd$hoSV2bbHkdeI72ASm02qhmxA1zshlU54JSPGG9jHTDk=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user3",
+      "first_name": "Vasiliy",
+      "last_name": "",
+      "email": "net@lipsat.ru",
+      "is_staff": false,
+      "is_active": false,
+      "date_joined": "2022-01-13T18:10:51.288Z",
+      "avatar": "",
+      "age": 33,
+      "activation_key": "dba82e7168bee7a34320a2181efcb7b82fb08c79",
+      "activation_key_expires": "2022-01-15T18:10:44.973Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$TnOPcTmTsT58t94AVneguf$104FpZsUFjH1QCgVeGDIpb/Bxp+1bdW8vCQQbqnQWw0=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user4",
+      "first_name": "Vasiliy",
+      "last_name": "",
+      "email": "net@lipsat.ru",
+      "is_staff": false,
+      "is_active": false,
+      "date_joined": "2022-01-13T18:12:21.153Z",
+      "avatar": "",
+      "age": 33,
+      "activation_key": "bc7f0ea4f265a6b9b1e2a93c2ee2609d0ec58f8a",
+      "activation_key_expires": "2022-01-15T18:11:59.941Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$zDt0lVoztj4W2fJCdTDjqH$JsYaxQuuuexw0HW0XiqRbI6wLsB/8KGLG8s1irEi0j0=",
+      "last_login": "2022-01-13T18:52:54.496Z",
+      "is_superuser": false,
+      "username": "user5",
+      "first_name": "Vasiliy",
+      "last_name": "",
+      "email": "net@lipsat.ru",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-01-13T18:13:42.936Z",
+      "avatar": "",
+      "age": 33,
+      "activation_key": "37e3ffba40cecfa11b944d397b45dbe01af23d79",
+      "activation_key_expires": "2022-01-15T18:13:29.595Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$rqjVT2zDAMdAnQ6ycLrGCx$uEUjVrlRUY8OZl1eHl70nz57gh6LfJoobluVi4GgXpw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user6",
+      "first_name": "User",
+      "last_name": "",
+      "email": "net@lipsat.ru",
+      "is_staff": false,
+      "is_active": false,
+      "date_joined": "2022-01-18T09:48:17.842Z",
+      "avatar": "",
+      "age": 22,
+      "activation_key": "a528ba9e22534d0392400faaadcef8ebe5886a16",
+      "activation_key_expires": "2022-01-20T09:46:58.153Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$HwlUpCnZaep48iDNmtU2D5$yeLUgTPitu+eF47diMsTeWENB3m19HEUblbBaT6KjNw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user7",
+      "first_name": "User",
+      "last_name": "",
+      "email": "net@lipsat.ru",
+      "is_staff": false,
+      "is_active": false,
+      "date_joined": "2022-01-18T14:37:20.768Z",
+      "avatar": "",
+      "age": 99,
+      "activation_key": "65bc14a38f97f5837674386d5551d1d81b4ab732",
+      "activation_key_expires": "2022-01-20T14:19:25.384Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 10,
+    "fields": {
+      "password": "!67fwdctyclMixvOHSB2q1IorrbvrtEaLHjzATcRK",
+      "last_login": "2022-01-18T16:01:09.623Z",
+      "is_superuser": false,
+      "username": "id699333076",
+      "first_name": "Умныйдом",
+      "last_name": "Смарт",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-01-18T15:50:40.894Z",
+      "avatar": "",
+      "age": 38,
+      "activation_key": "",
+      "activation_key_expires": "2022-01-20T15:50:34.258Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.shopuser",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$g29EZCGjzkf28kNFk7dRg1$q8tzE2QH7ZGnITrfDXJd1OPjPYIkBz1Pe8iN3OHe3dw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user8",
+      "first_name": "User",
+      "last_name": "",
+      "email": "net@lipsat.ru",
+      "is_staff": false,
+      "is_active": false,
+      "date_joined": "2022-01-19T09:56:18.300Z",
+      "avatar": "",
+      "age": 33,
+      "activation_key": "044d2024c2339fbb4b20b3574ee3dd1cb98469cb",
+      "activation_key_expires": "2022-01-21T09:56:18.395Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "productsapp.productcategory",
+    "pk": 1,
+    "fields": {
+      "name": "Дом",
+      "description": "Все для дома",
+      "create_at": "2021-12-20T12:27:44.946Z",
+      "update_at": "2022-01-05T09:25:59.616Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.productcategory",
+    "pk": 2,
+    "fields": {
+      "name": "Офис",
+      "description": "",
+      "create_at": "2021-12-20T12:27:44.948Z",
+      "update_at": "2021-12-20T12:27:44.948Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.productcategory",
+    "pk": 3,
+    "fields": {
+      "name": "Модерн",
+      "description": "",
+      "create_at": "2021-12-20T12:27:44.949Z",
+      "update_at": "2021-12-20T12:27:44.949Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.productcategory",
+    "pk": 4,
+    "fields": {
+      "name": "Классика",
+      "description": "",
+      "create_at": "2021-12-20T12:27:44.951Z",
+      "update_at": "2022-01-05T08:12:27.409Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.productcategory",
+    "pk": 5,
+    "fields": {
+      "name": "Лофт",
+      "description": "ssds",
+      "create_at": "2022-01-04T15:27:14.145Z",
+      "update_at": "2022-01-04T15:34:32.506Z",
+      "is_active": false
+    }
+  },
+  {
+    "model": "productsapp.product",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "name": "Квадратный стул",
+      "image": "products_images/product-4.jpg",
+      "short_desc": "Удобный квадратный стул",
+      "description": "",
+      "price": "1960.90",
+      "quantity": 9,
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.product",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "name": "Часы в дом",
+      "image": "products_images/product-4-sm.jpg",
+      "short_desc": "Удивительные часы",
+      "description": "Удивительный стул красного цвета. Удивительный стул красного цвета. \r\nУдивительный стул красного цвета.",
+      "price": "599.90",
+      "quantity": 4,
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.product",
+    "pk": 3,
+    "fields": {
+      "category": 2,
+      "name": "Часы в офис",
+      "image": "products_images/product-4-sm_9xV4hTk.jpg",
+      "short_desc": "Часы часы",
+      "description": "",
+      "price": "1500.00",
+      "quantity": 10,
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.product",
+    "pk": 4,
+    "fields": {
+      "category": 3,
+      "name": "Стулья",
+      "image": "products_images/product-2.jpg",
+      "short_desc": "Стулья стулья",
+      "description": "",
+      "price": "999.00",
+      "quantity": 3,
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.product",
+    "pk": 5,
+    "fields": {
+      "category": 3,
+      "name": "лампа",
+      "image": "products_images/product-31.jpg",
+      "short_desc": "какая-то лампа",
+      "description": "какая-то лампа, какая-то лампа, какая-то лампа, какая-то лампа",
+      "price": "6500.00",
+      "quantity": 10,
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.product",
+    "pk": 6,
+    "fields": {
+      "category": 2,
+      "name": "Стул белый",
+      "image": "products_images/product-21.jpg",
+      "short_desc": "стульчик белый",
+      "description": "стул стул стул стул стул стул стул стул стул",
+      "price": "3500.00",
+      "quantity": 10,
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.product",
+    "pk": 7,
+    "fields": {
+      "category": 1,
+      "name": "Бра",
+      "image": "products_images/product-41.jpg",
+      "short_desc": "бра настенное",
+      "description": "бра бра бра. Большое описание.",
+      "price": "1500.00",
+      "quantity": 10,
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.product",
+    "pk": 8,
+    "fields": {
+      "category": 1,
+      "name": "Чайник наклонный",
+      "image": "products_images/product-3.jpg",
+      "short_desc": "Фик пойми что",
+      "description": "",
+      "price": "100.00",
+      "quantity": 5,
+      "is_active": true
+    }
+  },
+  {
+    "model": "productsapp.product",
+    "pk": 9,
+    "fields": {
+      "category": 4,
+      "name": "Тест без картинки",
+      "image": "",
+      "short_desc": "текст",
+      "description": "",
+      "price": "10.00",
+      "quantity": 1,
+      "is_active": false
+    }
+  }
+]

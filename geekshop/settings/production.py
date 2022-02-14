@@ -54,4 +54,4 @@ EMAIL_PORT = env('EMAIL_PORT')
 
 # Для формирования почтового сообщения
 DEFAULT_FROM_EMAIL = 'noreply@geekshop.local'
-DOMAIN_NAME = 'http://localhost:8000'
+DOMAIN_NAME = 'https://gb.smart48.ru'

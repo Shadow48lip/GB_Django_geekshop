@@ -77,7 +77,7 @@ def register(request):
             user = register_form.save()
             # send e-mail
             if send_verify_mail(user):
-                print('сообщение подтверждения умпешно отправлено')
+                print('сообщение подтверждения успешно отправлено')
             else:
                 print('ошибка отправки сообщения')
 
@@ -100,7 +100,7 @@ def verify(request, email, activation_key):
         if user.email == email and not user.is_activation_key_expired():
             user.is_active = True
             user.save()
-            auth.login(request, user)
+            auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             print(f'OK activation user: {user}')
         else:
             print(f'error activation user: {user}')
@@ -109,7 +109,7 @@ def verify(request, email, activation_key):
         return render(request, 'authapp/verification.html', content)
 
     except Exception as e:
-        print(f'error activation user : {e.args}')
+        print(f'error activation user: {e.args}')
         return HttpResponseRedirect(reverse('index'))
 
 
